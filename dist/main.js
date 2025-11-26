@@ -48,12 +48,11 @@ function setControlsEnabled(e){
 function speak(text){
   playing=true
   setControlsEnabled(false)
-  const isHttps=location.protocol==='https:'
-  const remoteBase=isHttps?'/api/audio?label=':'http://du.hanyupinyin.cn/du/pinyin/'
+  const localBase='audio/'
   let triedTone=false
   const buildSrc=(lbl,tone)=>{
     const base=(lbl||'').replace(/ü/g,'v')+(tone?'1':'')
-    return isHttps?remoteBase+base:remoteBase+base+'.mp3'
+    return localBase+base+'.mp3'
   }
   const audio=new Audio()
   audio.src=buildSrc(text,false)
