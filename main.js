@@ -183,11 +183,11 @@ resetBtn.addEventListener("click",onReset)
 nextBtn.addEventListener("click",onNext)
 hintBtn&&hintBtn.addEventListener("click",speakHint)
 bottomSubmitBtn&&bottomSubmitBtn.addEventListener("click",onSubmit)
-registerBtn&&registerBtn.addEventListener("click",(ev)=>{
+ registerBtn&&registerBtn.addEventListener("click",(ev)=>{
   ev.preventDefault()
   ev.stopPropagation()
   const isDist=window.location.pathname.includes('/dist/')
-  const target=isDist?'/dist/register':'/register'
+  const target=isDist?'./register.html':'register.html'
   window.location.assign(target)
 })
 autoSpeakToggle&&autoSpeakToggle.addEventListener("change",()=>{autoSpeak=autoSpeakToggle.checked})
