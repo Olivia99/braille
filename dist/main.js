@@ -48,16 +48,20 @@ function setControlsEnabled(e){
 function speak(text){
   playing=true
   setControlsEnabled(false)
-  const remoteBase='http://du.hanyupinyin.cn/du/pinyin/'
-  const norm=(text||'').replace(/ü/g,'v')
-  const audio=new Audio()
+  const isHttps=location.protocol==='https:'
+  const remoteBase=isHttps?'/api/audio?label=':'http://du.hanyupinyin.cn/du/pinyin/'
   let triedTone=false
-  audio.src=remoteBase+norm+'.mp3'
+  const buildSrc=(lbl,tone)=>{
+    const base=(lbl||'').replace(/ü/g,'v')+(tone?'1':'')
+    return isHttps?remoteBase+base:remoteBase+base+'.mp3'
+  }
+  const audio=new Audio()
+  audio.src=buildSrc(text,false)
   audio.onended=()=>{playing=false;setControlsEnabled(true)}
   audio.onerror=()=>{
     if(!triedTone){
       triedTone=true
-      audio.src=remoteBase+norm+'1.mp3'
+      audio.src=buildSrc(text,true)
       audio.load()
       audio.play().catch(()=>{ audio.onerror&&audio.onerror() })
       return
