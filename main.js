@@ -10,11 +10,15 @@ const playBtn=document.getElementById("playBtn")
 const submitBtn=document.getElementById("submitBtn")
 const resetBtn=document.getElementById("resetBtn")
 const nextBtn=document.getElementById("nextBtn")
+const hintBtn=document.getElementById("hintBtn")
+const bottomSubmitBtn=document.getElementById("bottomSubmitBtn")
+const registerBtn=document.getElementById("registerBtn")
 const itemLabel=document.getElementById("itemLabel")
 const correctCount=document.getElementById("correctCount")
 const attemptCount=document.getElementById("attemptCount")
 const message=document.getElementById("message")
 const dots=Array.from(document.querySelectorAll(".dot"))
+const pad=document.querySelector(".pad")
 const autoSpeakToggle=document.getElementById("autoSpeakToggle")
 let autoSpeak=autoSpeakToggle?autoSpeakToggle.checked:false
 const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent||"")
@@ -87,6 +91,23 @@ function speak(text){
     audio.onerror&&audio.onerror()
   })
 }
+function speakHint(){
+  const it=items[index]
+  const names=["一","二","三","四","五","六"]
+  const words=[]
+  for(let i=0;i<6;i++){ if(it.dots[i]) words.push(names[i]) }
+  const text=words.join(" ")
+  if(!text){ return }
+  if("speechSynthesis" in window){
+    const u=new SpeechSynthesisUtterance(text)
+    u.lang="zh-CN"
+    const voices=window.speechSynthesis.getVoices()
+    const zh=voices.find(v=>/zh|中文|Chinese/i.test(v.lang||v.name))
+    if(zh) u.voice=zh
+    window.speechSynthesis.cancel()
+    window.speechSynthesis.speak(u)
+  }
+}
 function loadItem(){
   const it=items[index]
   itemLabel.textContent=it.label
@@ -95,6 +116,24 @@ function loadItem(){
   if(autoSpeak){
     speak(it.label)
   }
+}
+function applyCustomPositions(){
+  try{
+    const raw=localStorage.getItem("customDotPositions")
+    if(!raw) return
+    const pos=JSON.parse(raw)
+    if(!Array.isArray(pos)||pos.length!==6) return
+    if(pad){ pad.classList.add("pad--custom") }
+    dots.forEach(btn=>{
+      const di=Number(btn.dataset.index)
+      const p=pos[di]
+      if(!p) return
+      btn.style.position="absolute"
+      btn.style.left=`${p.xPct}%`
+      btn.style.top=`${p.yPct}%`
+      btn.style.transform="translate(-50%,-50%)"
+    })
+  }catch{}
 }
 function compare(a,b){
   for(let i=0;i<6;i++){if(a[i]!==b[i]) return false}
@@ -142,5 +181,15 @@ playBtn.addEventListener("click",()=>{speak(items[index].label)})
 submitBtn.addEventListener("click",onSubmit)
 resetBtn.addEventListener("click",onReset)
 nextBtn.addEventListener("click",onNext)
+hintBtn&&hintBtn.addEventListener("click",speakHint)
+bottomSubmitBtn&&bottomSubmitBtn.addEventListener("click",onSubmit)
+registerBtn&&registerBtn.addEventListener("click",(ev)=>{
+  ev.preventDefault()
+  ev.stopPropagation()
+  const isDist=window.location.pathname.includes('/dist/')
+  const target=isDist?'/dist/register':'/register'
+  window.location.assign(target)
+})
 autoSpeakToggle&&autoSpeakToggle.addEventListener("change",()=>{autoSpeak=autoSpeakToggle.checked})
+applyCustomPositions()
 loadItem()

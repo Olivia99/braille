@@ -13,47 +13,55 @@ window.PINYIN_DOTS={
   j:[true,true,false,true,true,false],
   q:[true,false,true,false,false,false],
   x:[true,true,false,false,true,false],
-  r:[true,true,true,false,true,false],
+  r:[false,true,false,true,true,false],
   z:[true,false,true,false,true,true],
   c:[true,false,false,true,false,false],
-  s:[false,true,true,true,false,false],
-  y:[true,false,true,true,true,true],
-  w:[false,true,false,true,true,true]
+  s:[false,true,true,true,false,false]
+ 
 }
 window.PINYIN_VOWELS={
-  a:[true,false,false,false,false,false],
-  o:[true,false,true,false,true,false],
-  e:[true,false,false,false,true,false],
+  a:[false,false,true,false,true,false],
+  o:[false,true,false,false,false,true],
+  e:[false,true,false,false,false,true],
   i:[false,true,false,true,false,false],
   u:[true,false,true,false,false,true],
-  ü:[false,false,false,false,true,true],
-  ai:[false,true,true,false,true,false],
-  ei:[false,true,false,false,true,true],
-  ao:[false,false,true,false,true,true],
-  ou:[false,false,true,true,true,false],
+  ü:[false,false,true,false,true,true],
+  ai:[false,true,false,true,false,true],
+  ei:[false,true,true,true,false,true],
+  ao:[false,true,true,false,true,false],
+  ou:[true,true,true,false,true,true],
+  ia:[true,true,false,true,false,true],
+  iao:[false,false,true,true,true,false],
+   ie:[true,false,false,false,true,false],
+   iu:[true,true,false,true,false,true],
+ua:[true,true,true,true,true,true],
+  uai:[true,false,true,true,true,true],
+  uan:[true,true,false,true,true,true],
+  uang:[false,true,true,false,true,true],
+ui:[false,true,false,true,true,true],
+  uo:[true,false,true,false,true,false],
   an:[true,true,true,false,false,true],
-  ang:[false,false,true,true,true,true],
-  en:[false,true,false,true,true,false],
-  eng:[false,true,false,true,true,true],
-  iu:[true,false,false,true,false,true],
-  ie:[true,true,false,false,false,true],
-  üe:[false,false,true,false,false,true],
-  er:[false,false,false,true,true,false],
-  in:[false,true,true,false,false,true],
-  un:[true,false,false,true,true,false],
-  ün:[false,false,true,true,false,true],
-  ing:[true,true,false,false,true,true],
-  ong:[true,false,true,true,false,true],
-  ia:[true,true,true,true,false,false],
-  iao:[true,true,false,true,false,true],
-  ian:[true,false,true,true,true,true],
-  iang:[true,true,true,false,true,true],
-  iong:[true,false,false,false,true,true],
-  ua:[false,true,true,true,false,true],
-  uai:[false,true,true,false,true,true],
-  uan:[true,false,true,false,true,true],
-  uang:[true,false,true,true,true,false],
-  ue:[false,true,false,false,false,true],
-  ui:[false,true,true,true,true,false],
-  uo:[false,false,true,false,true,false]
+  ang:[false,true,true,false,false,true],
+  en:[false,false,true,false,true,true],
+  eng:[false,false,true,true,true,true],
+  ian:[true,false,false,true,false,true],
+  iang:[true,false,true,true,false,true],
+  in:[true,true,false,false,false,true],
+ing:[true,false,false,false,false,true],
+un:[false,true,false,false,true,false],
+ en:[true,true,true,false,true,false], 
+ong:[false,true,false,false,true,true],
+iong:[true,false,false,true,true,true],
+üan:[true,true,true,true,false,true],
+  üe:[false,true,true,true,true,true],
+ ün:[false,false,false,true,true,true]
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }

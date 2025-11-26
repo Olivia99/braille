@@ -13,7 +13,7 @@ window.PINYIN_DOTS={
   j:[true,true,false,true,true,false],
   q:[true,false,true,false,false,false],
   x:[true,true,false,false,true,false],
-  r:[true,true,true,false,true,false],
+  r:[true,true,false,true,false,false],
   z:[true,false,true,false,true,true],
   c:[true,false,false,true,false,false],
   s:[false,true,true,true,false,false],
