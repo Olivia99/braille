@@ -17,6 +17,11 @@ const message=document.getElementById("message")
 const dots=Array.from(document.querySelectorAll(".dot"))
 const autoSpeakToggle=document.getElementById("autoSpeakToggle")
 let autoSpeak=autoSpeakToggle?autoSpeakToggle.checked:false
+const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent||"")
+if(isMobile){
+  autoSpeak=false
+  if(autoSpeakToggle) autoSpeakToggle.checked=false
+}
 function clearPad(){
   userDots=[false,false,false,false,false,false]
   dots.forEach((btn)=>{
@@ -43,7 +48,6 @@ function setControlsEnabled(e){
   submitBtn.disabled=!e
   resetBtn.disabled=!e
   nextBtn.disabled=!e
-  dots.forEach(d=>d.disabled=!e)
 }
 function speak(text){
   playing=true
@@ -122,11 +126,17 @@ function onNext(){
   loadItem()
 }
 dots.forEach(btn=>{
-  btn.addEventListener("click",()=>{
+  const toggle=()=>{
     const i=Number(btn.dataset.index)
     userDots[i]=!userDots[i]
     updatePad()
-  })
+  }
+  const hasTouch='ontouchstart' in window
+  if(hasTouch){
+    btn.addEventListener("touchstart",(ev)=>{ev.preventDefault();toggle()},{passive:false})
+  }else{
+    btn.addEventListener("click",toggle)
+  }
 })
 playBtn.addEventListener("click",()=>{speak(items[index].label)})
 submitBtn.addEventListener("click",onSubmit)
