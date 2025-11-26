@@ -1,0 +1,15 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.5;background:#f7f7f8;color:#1f2328}
+.container{max-width:640px;margin:0 auto;padding:16px}
+h1{font-size:20px;margin:8px 0 16px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.controls button{padding:10px 14px;font-size:16px;border:1px solid #d0d7de;border-radius:8px;background:#fff}
+.controls button:active{background:#f0f2f4}
+.toggle{display:flex;align-items:center;gap:6px;font-size:14px}
+.status{margin-bottom:12px}
+#message{margin-top:8px;font-weight:600}
+.pad{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:16px;justify-items:center;align-items:center;margin-top:12px}
+.dot{width:72px;height:72px;border-radius:50%;border:2px solid #8b949e;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.06);touch-action:manipulation}
+.dot.active{background:#0969da;border-color:#0969da;box-shadow:0 0 0 4px rgba(9,105,218,.15)}
+.dot:focus{outline:none;box-shadow:0 0 0 4px rgba(9,105,218,.3)}
+@media (max-width:420px){.dot{width:64px;height:64px}.container{padding:12px}}

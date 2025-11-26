@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>中国盲文练习模式</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>中国盲文（6点位）练习模式</h1>
+      <div class="controls">
+        <button id="playBtn">发音</button>
+        <button id="submitBtn">提交</button>
+        <button id="resetBtn">重置</button>
+        <button id="nextBtn">下一题</button>
+        <label class="toggle"><input type="checkbox" id="autoSpeakToggle" checked> 自动发音</label>
+      </div>
+      <div class="status">
+        <div>当前练习：<span id="itemLabel"></span></div>
+        <div>正确：<span id="correctCount">0</span> / 总尝试：<span id="attemptCount">0</span></div>
+        <div id="message"></div>
+      </div>
+      <div class="pad" role="group" aria-label="盲文 6 点位输入面板">
+        <button class="dot" data-index="0" aria-pressed="false" aria-label="点位1 未选"></button>
+        <button class="dot" data-index="3" aria-pressed="false" aria-label="点位4 未选"></button>
+        <button class="dot" data-index="1" aria-pressed="false" aria-label="点位2 未选"></button>
+        <button class="dot" data-index="4" aria-pressed="false" aria-label="点位5 未选"></button>
+        <button class="dot" data-index="2" aria-pressed="false" aria-label="点位3 未选"></button>
+        <button class="dot" data-index="5" aria-pressed="false" aria-label="点位6 未选"></button>
+      </div>
+    </div>
+    <script src="pinyin.js"></script>
+    <script src="pronounce.js"></script>
+    <script src="main.js"></script>
+  </body>
+  </html>
